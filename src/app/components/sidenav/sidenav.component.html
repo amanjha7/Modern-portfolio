@@ -1,0 +1,39 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav 
+      [mode]="'side'" 
+      [opened]="isExpanded"
+      class="sidenav"
+      [ngClass]="{ 'collapsed': !isExpanded }">
+  
+      <mat-toolbar *ngIf="isExpanded">Controls</mat-toolbar>
+  
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard">
+          <div class="nav-content">
+            <mat-icon>dashboard</mat-icon>
+            <span *ngIf="isExpanded">Dashboard</span>
+          </div>
+        </a>
+        <a mat-list-item routerLink="/settings">
+          <div class="nav-content">
+            <mat-icon>settings</mat-icon>
+            <span *ngIf="isExpanded">Settings</span>
+          </div>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="toggleSidenav()">
+          <mat-icon>{{ isExpanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
+        </button>
+        <span>Jobs Status of Pronnel</span>
+      </mat-toolbar>
+  
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

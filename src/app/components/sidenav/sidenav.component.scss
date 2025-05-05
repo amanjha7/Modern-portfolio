@@ -1,0 +1,48 @@
+.sidenav-container {
+    height: 100vh;
+  }
+  
+  .sidenav {
+    width: 220px;
+    transition: width 0.3s ease-in-out;
+  
+    &.collapsed {
+      width: 60px;
+  
+      mat-toolbar {
+        display: none;
+      }
+  
+      mat-nav-list a {
+        justify-content: center;
+  
+        .nav-content {
+          justify-content: center;
+        }
+  
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+  
+  mat-nav-list a {
+    display: flex;
+    align-items: center;
+  
+    .nav-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  
+    mat-icon {
+      font-size: 24px;
+    }
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
