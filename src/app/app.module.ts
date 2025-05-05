@@ -14,6 +14,10 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { JobsStatusComponent } from './pages/jobs-status/jobs-status.component';
+import { JobsComponent } from './pages/jobs/jobs.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,8 @@ import { JobsStatusComponent } from './pages/jobs-status/jobs-status.component';
     SidenavComponent,
     DashboardComponent,
     SettingsComponent,
-    JobsStatusComponent
+    JobsStatusComponent,
+    JobsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,10 @@ import { JobsStatusComponent } from './pages/jobs-status/jobs-status.component';
     MatToolbarModule,
     MatListModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatTabsModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
