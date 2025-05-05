@@ -13,13 +13,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { JobsStatusComponent } from './pages/jobs-status/jobs-status.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
     DashboardComponent,
-    SettingsComponent
+    SettingsComponent,
+    JobsStatusComponent
   ],
   imports: [
     BrowserModule,
