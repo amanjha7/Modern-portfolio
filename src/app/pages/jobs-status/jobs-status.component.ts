@@ -22,23 +22,22 @@ interface Experience {
   providers: [DatePipe]
 })
 export class JobsStatusComponent {
-  experienceData: Experience[] = [
-    {
-      id: 1,
-      name: 'John Doe',
-      role: 'Software Engineer',
-      yearsOfExperience: 5,
-      skills: ['JavaScript', 'Angular', 'Node.js'],
-      recruiterNotes: 'Strong candidate with good communication skills.',
-      status: 'active',
-      from: '2020-01-01',
-      to: '2023-01-01',
-      timestamp: 1672531199000,
-      attempts: 3
-    }
-  ];
-
-  displayedColumns: string[] = ['id', 'name', 'role', 'status', 'skills', 'fromTo', 'timestamp', 'attempts'];
+  experience: Experience = {
+    id: 1,
+    name: 'Profunnel Technologies Private Limited',
+    role: 'Product Engineer',
+    yearsOfExperience: 1,
+    skills: [
+      'JavaScript', 'Angular', 'Node.js', 'TypeScript',
+      'HTML', 'CSS', 'REST APIs', 'GraphQL', 'MongoDB', 'MySQL'
+    ],
+    recruiterNotes: 'Strong candidate with good communication skills.',
+    status: 'active',
+    from: '2024-07-12',
+    to: 'Present',
+    timestamp: 1672531199000,
+    attempts: 3
+  };
 
   constructor(private datePipe: DatePipe) {}
 
@@ -46,16 +45,20 @@ export class JobsStatusComponent {
     return this.datePipe.transform(timestamp, 'medium') || '';
   }
 
-  getStatusClass(status: string): string {
-    switch (status) {
-      case 'active':
-        return 'status-active';
-      case 'inactive':
-        return 'status-inactive';
-      case 'pending':
-        return 'status-pending';
-      default:
-        return '';
-    }
+  getDuration(from: string, to: string): string {
+    const fromDate = new Date(from);
+    const toDate = to.toLowerCase() === 'present' ? new Date() : new Date(to);
+
+    const totalMonths =
+      (toDate.getFullYear() - fromDate.getFullYear()) * 12 +
+      (toDate.getMonth() - fromDate.getMonth());
+
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+
+    const yearStr = years > 0 ? `${years} year${years > 1 ? 's' : ''}` : '';
+    const monthStr = months > 0 ? `${months} month${months > 1 ? 's' : ''}` : '';
+
+    return [yearStr, monthStr].filter(Boolean).join(', ');
   }
 }

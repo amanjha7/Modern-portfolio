@@ -1,1 +1,40 @@
-<p>Experince</p>
+<mat-card class="experience-card">
+  <mat-card-header>
+    <div mat-card-avatar class="company-logo"></div>
+    <mat-card-title>{{ experience.name }}</mat-card-title>
+    <mat-card-subtitle>{{ experience.role }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="date-range">
+      <strong>Duration:</strong>
+      {{ experience.from }} → {{ experience.to }}
+      <span *ngIf="experience.from">
+        ({{ getDuration(experience.from, experience.to) }})
+      </span>
+    </div>
+
+
+    <div class="experience-years">
+      <strong>Experience:</strong> {{ experience.yearsOfExperience }} year(s)
+    </div>
+
+    <div class="skills-section">
+      <strong>Skills:</strong>
+      <div class="skills-container">
+        <mat-chip *ngFor="let skill of experience.skills" color="primary" selected>
+          {{ skill }}
+        </mat-chip>
+      </div>
+    </div>
+
+    <div class="highlights">
+      <strong>Highlights:</strong>
+      <p>{{ experience.recruiterNotes }}</p>
+    </div>
+
+    <div class="timestamp">
+      <strong>Joined:</strong> {{ formatTimestamp(experience.timestamp) }}
+    </div>
+  </mat-card-content>
+</mat-card>

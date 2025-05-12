@@ -17,8 +17,9 @@ import { JobsStatusComponent } from './pages/jobs-status/jobs-status.component';
 import { JobsComponent } from './pages/jobs/jobs.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatChipsModule } from '@angular/material/chips';
+import {  MatChipsModule } from '@angular/material/chips';
 import { EducationComponent } from './pages/education/education.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { EducationComponent } from './pages/education/education.component';
     MatButtonModule,
     MatTableModule,
     MatTabsModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

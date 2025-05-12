@@ -1,60 +1,43 @@
-.container {
-    margin: 20px;
-  }
-  
-  .detail-row {
-    background: #f9f9f9;
-  }
-  
-  .detail-content {
-    padding: 20px;
-    background-color: #eef7ff;
-    border-left: 4px solid #2196f3;
-  }
-  
-  mat-chip.success {
-    background-color: #c8e6c9;
-    color: #256029;
-  }
-  
-  mat-chip.failure {
-    background-color: #ffcdd2;
-    color: #b71c1c;
-  }
-  
+.experience-card {
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 24px;
 
-  .mat-table {
-    width: 100%;
-    border: 1px solid #ddd;
+  .company-logo {
+    background-image: url('/assets/company-placeholder.png'); // optional
+    background-size: cover;
+    background-position: center;
   }
-  
-  mat-header-cell, mat-cell {
-    padding: 16px;
+
+  .date-range,
+  .experience-years,
+  .skills-section,
+  .highlights,
+  .timestamp {
+    margin: 12px 0;
     font-size: 14px;
-    border-bottom: 1px solid #e0e0e0;
   }
-  
-  mat-header-row, mat-row {
-    min-height: 48px;
+
+  .skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+
+    mat-chip {
+      font-size: 13px;
+      background-color: #e3f2fd;
+      color: #1976d2;
+    }
   }
-  
-  .detail-row {
-    background: #f9f9f9;
+
+  mat-card-title {
+    font-size: 20px;
+    font-weight: 600;
   }
-  
-  .detail-content {
-    padding: 20px;
-    background-color: #eef7ff;
-    border-left: 4px solid #2196f3;
+
+  mat-card-subtitle {
+    font-size: 14px;
+    color: #666;
   }
-  
-  mat-chip.success {
-    background-color: #c8e6c9;
-    color: #256029;
-  }
-  
-  mat-chip.failure {
-    background-color: #ffcdd2;
-    color: #b71c1c;
-  }
-  
+}
