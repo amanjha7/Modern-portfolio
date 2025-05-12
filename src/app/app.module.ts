@@ -18,6 +18,7 @@ import { JobsComponent } from './pages/jobs/jobs.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatChipsModule } from '@angular/material/chips';
+import { EducationComponent } from './pages/education/education.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatChipsModule } from '@angular/material/chips';
     DashboardComponent,
     SettingsComponent,
     JobsStatusComponent,
-    JobsComponent
+    JobsComponent,
+    EducationComponent
   ],
   imports: [
     BrowserModule,

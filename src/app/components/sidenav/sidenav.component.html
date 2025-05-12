@@ -16,8 +16,14 @@
         </a>
         <a mat-list-item routerLink="/jobs-status">
           <div class="nav-content">
-            <mat-icon>assignment</mat-icon>
-            <span *ngIf="isExpanded">Jobs</span>
+            <mat-icon>work</mat-icon>
+            <span *ngIf="isExpanded">Experince</span>
+          </div>
+        </a>
+        <a mat-list-item routerLink="/education">
+          <div class="nav-content">
+            <mat-icon>school</mat-icon>
+            <span *ngIf="isExpanded">Education</span>
           </div>
         </a>
         <a mat-list-item routerLink="/settings">
@@ -34,7 +40,7 @@
         <button mat-icon-button (click)="toggleSidenav()">
           <mat-icon>{{ isExpanded ? 'chevron_left' : 'chevron_right' }}</mat-icon>
         </button>
-        <span>Jobs Status of Pronnel</span>
+        <span>My Portfolio and Services</span>
       </mat-toolbar>
   
       <div class="content">
