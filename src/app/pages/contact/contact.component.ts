@@ -1,5 +1,5 @@
 // contact.component.ts
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -9,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent {
+export class ContactComponent implements AfterViewInit {
   contactForm: FormGroup;
 
   constructor(private fb: FormBuilder,private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
@@ -30,6 +30,26 @@ export class ContactComponent {
     'leetcode',
     this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/leetcode.svg')
     );
+  }
+
+  ngAfterViewInit(): void {
+    this.loadLinkedInBadgeScript();
+  }
+
+   private loadLinkedInBadgeScript(): void {
+    // Check if script already exists
+    const existingScript = document.querySelector('script[src="https://platform.linkedin.com/badges/js/profile.js"]');
+    if (existingScript) {
+      // Remove it first to reload it
+      existingScript.remove();
+    }
+
+    // Create and append the script
+    const script = document.createElement('script');
+    script.src = 'https://platform.linkedin.com/badges/js/profile.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
   }
 
   onSubmit() {
