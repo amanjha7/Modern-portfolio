@@ -21,6 +21,8 @@ import {  MatChipsModule } from '@angular/material/chips';
 import { EducationComponent } from './pages/education/education.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatTabsModule,
     MatChipsModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressBarModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

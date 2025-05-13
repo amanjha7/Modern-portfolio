@@ -1,56 +1,102 @@
-.experience-card {
-  max-width: 800px;
-  margin: 32px auto;
-  padding: 24px;
+.experience-container {
+  display: flex;
+  gap: 20px;
 
-  .company-logo {
-    background-image: url('/assets/company-placeholder.png'); // optional
-    background-size: cover;
-    background-position: center;
+  .left-panel {
+    width: 300px;
+    border-right: 1px solid #ddd;
+    padding-right: 10px;
+    mat-list-item {
+      cursor: pointer;
+      &.selected {
+        background-color: #e0f7fa;
+      }
+    }
   }
 
-  .date-range,
-  .experience-years,
-  .skills-section,
-  .highlights,
-  .timestamp {
-    margin: 12px 0;
-    font-size: 14px;
+  .right-panel {
+    flex: 1;
   }
 
   .skills-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 6px;
+    gap: 6px;
+    margin-top: 5px;
+  }
 
-    mat-chip {
-      font-size: 13px;
-      background-color: #e3f2fd;
-      color: #1976d2;
+  .highlight-list {
+    padding-left: 20px;
+    list-style: disc;
+  }
+}
+
+.logo-image {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.experience-container {
+  display: flex;
+  gap: 20px;
+
+  .left-panel {
+    width: 300px;
+    border-right: 1px solid #e0e0e0;
+    padding: 16px 8px;
+    background-color: #f9f9f9;
+
+    .experience-list {
+      .list-item {
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.2s ease-in-out;
+
+        &.selected {
+          background-color: #e3f2fd;
+        }
+
+        .list-item-content {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+
+          .logo-image {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 4px;
+            flex-shrink: 0;
+          }
+
+          .text-content {
+            display: flex;
+            flex-direction: column;
+
+            .company-name {
+              font-weight: 600;
+              font-size: 16px;
+              color: #333;
+            }
+
+            .role {
+              font-size: 14px;
+              color: #666;
+            }
+          }
+        }
+      }
     }
   }
 
-  mat-card-title {
-    font-size: 20px;
-    font-weight: 600;
-  }
-
-  mat-card-subtitle {
-    font-size: 14px;
-    color: #666;
+  .right-panel {
+    flex: 1;
+    padding: 16px;
   }
 }
 
-.highlight-list {
-  padding-left: 16px;
-  li {
-    margin-bottom: 8px;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-}
-
-mat-expansion-panel {
-  margin-top: 16px;
+* {
+  line-height: 1.5;
 }

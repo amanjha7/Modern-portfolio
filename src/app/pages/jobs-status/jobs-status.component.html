@@ -1,56 +1,75 @@
-<mat-card class="experience-card">
-  <mat-card-header>
-    <div mat-card-avatar class="company-logo"></div>
-    <img mat-card-avatar class="pronnel-logo" src="assets/pronnellogo.png" alt="Pronnel Logo">
-    <mat-card-title>{{ experience.name }}</mat-card-title>
-    <mat-card-subtitle>{{ experience.role }}</mat-card-subtitle>
-  </mat-card-header>
-
-  <mat-card-content>
-    <div class="date-range">
-      <strong>Duration:</strong>
-      {{ experience.from }} → {{ experience.to }}
-      <span *ngIf="experience.from">
-        ({{ getDuration(experience.from, experience.to) }})
-      </span>
-    </div>
-
-
-    <div class="experience-years">
-      <strong>Experience:</strong> {{ experience.yearsOfExperience }} year(s)
-    </div>
-
-    <div class="skills-section">
-      <strong>Skills:</strong>
-      <div class="skills-container">
-        <mat-chip *ngFor="let skill of experience.skills" color="primary" selected>
-          {{ skill }}
-        </mat-chip>
+<div class="experience-container">
+  <div class="left-panel">
+    <mat-list-item 
+      *ngFor="let exp of allExperiences" 
+      (click)="selectExperience(exp)" 
+      [class.selected]="exp.id === selectedExperience?.id"
+      class="list-item"
+    >
+      <div class="list-item-content">
+        <img [src]="exp.logo" alt="{{ exp.name }} logo" class="logo-image" />
+        <div class="text-content">
+          <div class="company-name">{{ exp.name }}</div>
+          <div class="role">{{ exp.role }}</div>
+        </div>
       </div>
-    </div>
+    </mat-list-item>
 
-    <div class="highlights">
-      <strong>Highlights:</strong>
-      <p>{{ experience.recruiterNotes }}</p>
-    </div>
+  </div>
 
-    <div class="timestamp">
-      <strong>Joined:</strong> {{ formatTimestamp(experience.timestamp) }}
-    </div>
+  <div class="right-panel" *ngIf="selectedExperience">
+    <mat-card class="experience-card">
+      <mat-card-header>
+        <img mat-card-avatar [src]="selectedExperience.logo" alt="Company Logo">
+        <mat-card-title>{{ selectedExperience.name }}</mat-card-title>
+        <mat-card-subtitle>{{ selectedExperience.role }}</mat-card-subtitle>
+      </mat-card-header>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Detailed Highlights
-        </mat-panel-title>
-      </mat-expansion-panel-header>
+      <mat-card-content>
+        <div class="date-range">
+          <strong>Duration:</strong>
+          {{ selectedExperience.from }} → {{ selectedExperience.to }}
+        </div>
 
-      <ul class="highlight-list">
-        <li *ngFor="let item of experienceHighlights">
-          {{ item }}
-        </li>
-      </ul>
-    </mat-expansion-panel>
+        <div class="experience-years">
+          <strong>Experience:</strong> 
+          <span *ngIf="selectedExperience.from">
+            ({{ getDuration(selectedExperience.from, selectedExperience.to) }})
+          </span>
+        </div>
 
-  </mat-card-content>
-</mat-card>
+        <div class="skills-section">
+          <strong>Skills:</strong>
+          <div class="skills-container">
+            <mat-chip *ngFor="let skill of selectedExperience.skills" color="primary" selected>
+              {{ skill }}
+            </mat-chip>
+          </div>
+        </div>
+
+        <div class="highlights mt-2">
+          <strong>Highlights:</strong>
+          <p>{{ selectedExperience.recruiterNotes }}</p>
+        </div>
+
+        <div class="timestamp">
+          <strong>Joined:</strong> {{ formatTimestamp(selectedExperience.timestamp) }}
+        </div>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Detailed Highlights
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <ul class="highlight-list">
+            <li *ngFor="let item of experienceHighlights">
+              {{ item }}
+            </li>
+          </ul>
+        </mat-expansion-panel>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

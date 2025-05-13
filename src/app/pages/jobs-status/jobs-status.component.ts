@@ -13,6 +13,8 @@ interface Experience {
   to: string;
   timestamp: number;
   attempts: number;
+  logo?: string;
+  highlights?: string[];
 }
 
 @Component({
@@ -22,7 +24,8 @@ interface Experience {
   providers: [DatePipe]
 })
 export class JobsStatusComponent {
-  experience: Experience = {
+  selectedExperience: Experience | null = null;
+  allExperiences: Experience[] = [{
     id: 1,
     name: 'Profunnel Technologies Private Limited',
     role: 'Product Engineer',
@@ -45,8 +48,9 @@ export class JobsStatusComponent {
     from: '2024-07-12',
     to: 'Present',
     timestamp: 1720758658000,
-    attempts: 3
-  };
+    attempts: 3,
+    logo: 'assets/logos/images/pronnellogo.png',
+  }];
 
   experienceHighlights: string[] = [
   'Built OAuth/REST integrations for DocuSign, GitHub, GitLab, etc.',
@@ -89,5 +93,10 @@ export class JobsStatusComponent {
     const monthStr = months > 0 ? `${months} month${months > 1 ? 's' : ''}` : '';
 
     return [yearStr, monthStr].filter(Boolean).join(', ');
+  }
+
+  selectExperience(exp: Experience) {
+    this.selectedExperience = exp;
+    // Update experienceHighlights if dynamic
   }
 }
