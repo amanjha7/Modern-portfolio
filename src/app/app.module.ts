@@ -26,6 +26,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -59,6 +60,7 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatInputModule,
     ReactiveFormsModule,
+    HttpClientModule
     
   ],
   providers: [],
