@@ -1,6 +1,7 @@
 <mat-card class="experience-card">
   <mat-card-header>
     <div mat-card-avatar class="company-logo"></div>
+    <img mat-card-avatar class="pronnel-logo" src="assets/pronnellogo.png" alt="Pronnel Logo">
     <mat-card-title>{{ experience.name }}</mat-card-title>
     <mat-card-subtitle>{{ experience.role }}</mat-card-subtitle>
   </mat-card-header>
@@ -36,5 +37,20 @@
     <div class="timestamp">
       <strong>Joined:</strong> {{ formatTimestamp(experience.timestamp) }}
     </div>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Detailed Highlights
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ul class="highlight-list">
+        <li *ngFor="let item of experienceHighlights">
+          {{ item }}
+        </li>
+      </ul>
+    </mat-expansion-panel>
+
   </mat-card-content>
 </mat-card>

@@ -1,1 +1,14 @@
-<p>education works!</p>
+<div class="education-grid">
+  <mat-card class="edu-card" *ngFor="let edu of educationList">
+    <div class="edu-card-header">
+      <img [src]="edu.logoUrl" alt="{{ edu.institution }} logo" class="edu-logo" />
+      <div class="edu-info">
+        <h3>{{ edu.institution }}</h3>
+        <p *ngIf="edu.board"><strong>Board:</strong> {{ edu.board }}</p>
+        <p *ngIf="edu.percentage"><strong>Percentage:</strong> {{ edu.percentage }}%</p>
+        <p *ngIf="edu.cpi"><strong>CPI:</strong> {{ edu.cpi }}</p>
+        <p><strong>Duration:</strong> {{ edu.duration }}</p>
+      </div>
+    </div>
+  </mat-card>
+</div>
