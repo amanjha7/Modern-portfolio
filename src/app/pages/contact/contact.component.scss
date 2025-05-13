@@ -1,0 +1,89 @@
+/* contact.component.scss */
+@import '@angular/material/theming';
+
+.contact-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: mat-color($mat-indigo, 800);
+  }
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.contact-info, .contact-form {
+  padding: 2rem;
+  height: fit-content;
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+
+    mat-icon {
+      margin-right: 1rem;
+      color: mat-color($mat-indigo, 500);
+    }
+
+    h3 {
+      margin: 0 0 0.5rem;
+      color: mat-color($mat-grey, 800);
+    }
+
+    a, p {
+      color: mat-color($mat-grey, 600);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: mat-color($mat-indigo, 500);
+    }
+  }
+}
+
+.social-links {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+
+  a {
+    color: mat-color($mat-grey, 600);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: mat-color($mat-indigo, 500);
+    }
+  }
+
+  mat-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.contact-form {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  button {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+}
