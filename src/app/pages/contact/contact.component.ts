@@ -1,4 +1,5 @@
 // contact.component.ts
+import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material/icon';
@@ -12,7 +13,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class ContactComponent implements AfterViewInit {
   contactForm: FormGroup;
 
-  constructor(private fb: FormBuilder,private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer) {
+  constructor(private fb: FormBuilder,private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private http: HttpClient) {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -61,6 +62,20 @@ export class ContactComponent implements AfterViewInit {
       const message = this.contactForm.value.message;
       const name = this.contactForm.value.name;
       const email = this.contactForm.value.email;
+
+      this.http.post('http://localhost:5000/api/send-email', { message, name, email })
+        .subscribe(
+          response => {
+            console.log('Email sent successfully:', response);
+            // Optionally reset the form or show a success message
+            this.contactForm.reset();
+            
+          },
+          error => {
+            console.error('Error sending email:', error);
+            // Optionally show an error message
+          }
+        );  
       
     }
   }
