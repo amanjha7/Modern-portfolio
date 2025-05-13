@@ -1,1 +1,77 @@
-<p>dashboard works!</p>
+<div class="dashboard-container container mt-4">
+  <!-- Row 1: Profile & Summary -->
+  <div class="row align-items-center mb-5">
+    <div class="col-md-4 text-center">
+      <img src="assets/profile.png" alt="Profile Picture" class="profile-img rounded-circle shadow" />
+    </div>
+    <div class="col-md-8">
+      <h1 class="display-5 fw-bold">Aman Jha</h1>
+      <h4 class="text-muted">Frontend Developer | Angular Specialist</h4>
+      <p class="lead mt-3">
+        Passionate developer with a knack for creating clean, scalable, and accessible user interfaces using Angular, TypeScript, and modern web technologies.
+      </p>
+    </div>
+  </div>
+
+  <!-- Row 2: Quick Stats -->
+  <div class="row text-center mb-5">
+    <div class="col-md-4">
+      <mat-card class="stat-card">
+        <mat-card-title>3+ Years</mat-card-title>
+        <mat-card-subtitle>Experience</mat-card-subtitle>
+      </mat-card>
+    </div>
+    <div class="col-md-4">
+      <mat-card class="stat-card">
+        <mat-card-title>12 Projects</mat-card-title>
+        <mat-card-subtitle>Completed</mat-card-subtitle>
+      </mat-card>
+    </div>
+    <div class="col-md-4">
+      <mat-card class="stat-card">
+        <mat-card-title>5 Certifications</mat-card-title>
+        <mat-card-subtitle>Verified</mat-card-subtitle>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- Row 3: Featured Projects -->
+  <div class="mb-5">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="row g-4">
+      <div class="col-md-6" *ngFor="let project of featuredProjects">
+        <mat-card class="project-card h-100">
+          <mat-card-header>
+            <mat-card-title>{{ project.title }}</mat-card-title>
+            <mat-card-subtitle>{{ project.tech }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ project.description }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <a [href]="project.link" target="_blank" class="btn btn-outline-primary btn-sm">View</a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 4: Achievements -->
+  <div class="mb-5">
+    <h2 class="section-title">Achievements</h2>
+    <div class="row g-3">
+      <div class="col-md-4" *ngFor="let award of achievements">
+        <div class="achievement-card p-3 shadow-sm rounded bg-light">
+          <h5 class="fw-semibold">{{ award.title }}</h5>
+          <p class="text-muted">{{ award.detail }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 5: Call-to-Action -->
+  <div class="text-center mt-5">
+    <h3>Interested in working together?</h3>
+    <a routerLink="/contact" class="btn btn-primary btn-lg mt-3">Let's Talk</a>
+  </div>
+</div>
