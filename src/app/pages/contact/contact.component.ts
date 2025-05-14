@@ -63,7 +63,7 @@ export class ContactComponent implements AfterViewInit {
       const name = this.contactForm.value.name;
       const email = this.contactForm.value.email;
 
-      this.http.post('http://localhost:5000/api/send-email', { message, name, email })
+      this.http.post('https://portfolio-services-backend.onrender.com/api/send-email', { message, name, email })
         .subscribe(
           response => {
             console.log('Email sent successfully:', response);
