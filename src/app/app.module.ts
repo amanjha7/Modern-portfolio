@@ -27,6 +27,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PhonePipe } from './pipes/phone.pipe';
 
 
 
@@ -39,7 +41,8 @@ import { HttpClientModule } from '@angular/common/http';
     JobsStatusComponent,
     JobsComponent,
     EducationComponent,
-    ContactComponent
+    ContactComponent,
+    PhonePipe
   ],
   imports: [
     BrowserModule,
@@ -60,8 +63,8 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatInputModule,
     ReactiveFormsModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    MatProgressSpinnerModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
