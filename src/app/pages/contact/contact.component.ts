@@ -64,7 +64,8 @@ export class ContactComponent {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      message: ['', [Validators.required, Validators.minLength(20)]]
+      message: ['', [Validators.required, Validators.minLength(20)]],
+      recaptcha: ['', Validators.required]
     });
 
     // Register custom SVG icons
@@ -83,7 +84,7 @@ async onSubmit() {
     this.sending = true;
     try {
       const response = await this.http.post(
-        'https://portfolio-services-backend.onrender.com/api/send-email',
+        'http://localhost:5000/api/send-email',
         this.contactForm.value
       ).toPromise();
 
@@ -119,6 +120,9 @@ async onSubmit() {
   this.onScroll(); // Run once initially in case already in view
 }
 
+  onCaptchaResolved(captchaResponse: string) {
+    this.contactForm.patchValue({ recaptcha: captchaResponse });
+  }
 
   private showNotification(message: string, isError = false) {
     // Implement snackbar or toast notification here

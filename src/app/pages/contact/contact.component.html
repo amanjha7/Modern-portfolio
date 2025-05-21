@@ -107,6 +107,17 @@
             </mat-error>
           </mat-form-field>
 
+          <re-captcha 
+            formControlName="recaptcha" 
+            siteKey="6Ldp00IrAAAAAOxK-8yabBI--62M-1H0kFH7RHxX"
+            (resolved)="onCaptchaResolved($event)">
+          </re-captcha>
+
+          <mat-error *ngIf="contactForm.get('recaptcha')?.invalid">
+            Please complete the captcha
+          </mat-error>
+
+
           <button mat-raised-button 
                   color="primary" 
                   type="submit" 

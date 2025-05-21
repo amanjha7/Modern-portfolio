@@ -30,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PhonePipe } from './pipes/phone.pipe';
 
-
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -64,7 +64,9 @@ import { PhonePipe } from './pipes/phone.pipe';
     MatInputModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatProgressSpinnerModule    
+    MatProgressSpinnerModule ,
+    ReactiveFormsModule,
+    RecaptchaModule   
   ],
   providers: [],
   bootstrap: [AppComponent]
