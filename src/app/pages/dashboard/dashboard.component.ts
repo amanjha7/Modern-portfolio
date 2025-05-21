@@ -8,18 +8,27 @@ import { Component } from '@angular/core';
 export class DashboardComponent {
   featuredProjects = [
     {
-      title: 'Portfolio Website',
-      tech: 'Angular, SCSS, Material',
-      description: 'A sleek personal website with projects, achievements, and contact form.',
-      link: 'https://yourportfolio.com'
+      title: 'Document Fixer',
+      tech: 'Angular, Node.js',
+      description: 'A web application to Modify(docx > pdf, pdf > docx) and format documents and edit Images.',
+      link: 'https://document-frontend-3luh.vercel.app',
+      image: 'https://i.imgur.com/yourimage1.png'
     },
     {
       title: 'Task Manager App',
       tech: 'Angular, Firebase',
       description: 'A productivity app to manage daily tasks and goals.',
-      link: 'https://github.com/yourrepo'
+      link: 'https://github.com/yourrepo',
+      image: 'https://i.imgur.com/yourimage2.png'
     }
   ];
+
+  stats = [
+    { label: 'Projects Completed', value: 15, icon: 'check_circle' },
+    { label: 'GitHub Stars', value: 1200, icon: 'star' },
+    { label: 'Contributions', value: 300, icon: 'code' },
+    { label: 'Followers', value: 500, icon: 'people' }
+  ]
 
   achievements = [
     { title: 'Top 1% in LeetCode', detail: 'Solved 500+ problems and ranked globally.' },
