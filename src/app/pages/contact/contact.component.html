@@ -1,95 +1,119 @@
 <!-- contact.component.html -->
 <section class="contact-section">
-  <h2 class="section-title">Get in Touch</h2>
+  <div class="section-header" [@fadeIn]>
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="section-subtitle">Have a project in mind? Let's make it reality!</p>
+  </div>
 
-
-      <div class="badge-base LI-profile-badge " 
-        data-locale="en_US" 
-        data-size="large" 
-        data-theme="light" 
-        data-type="VERTICAL" 
-        data-vanity="aman-jha-07334a254" 
-        data-version="v1">
-      <a class="badge-base__link LI-simple-link" 
-        href="https://in.linkedin.com/in/aman-jha-07334a254?trk=profile-badge">
-        Aman Jha
-      </a>
-    </div>
-  
   <div class="contact-container">
+    <!-- LinkedIn Badge -->
+    <div class="linkedin-badge animate-on-scroll">
+      <div class="badge-base LI-profile-badge" 
+           data-locale="en_US" 
+           data-size="large" 
+           data-theme="light" 
+           data-type="VERTICAL" 
+           data-vanity="aman-jha-07334a254" 
+           data-version="v1">
+      </div>
+    </div>
+
     <!-- Contact Information -->
-    <mat-card class="contact-info">
+    <mat-card class="contact-info animate-on-scroll" [@stagger]>
       <mat-card-header>
-        <mat-card-title>Contact Information</mat-card-title>
+        <div mat-card-avatar class="contact-header-icon">
+          <mat-icon>contact_support</mat-icon>
+        </div>
+        <mat-card-title class="contact-info-title">Contact Details</mat-card-title>
+        <mat-card-subtitle>Always available for opportunities</mat-card-subtitle>
       </mat-card-header>
       
       <mat-card-content>
-        <div class="info-item">
-          <mat-icon>email</mat-icon>
-          <div>
-            <h3>Email</h3>
-            <a href="mailto:amanjhavdjs12tha@gmail.com">amanjhavdjs12tha&#64;gmail.com</a>
+        <div class="info-item" *ngFor="let item of contactItems" @fadeIn>
+          <mat-icon class="info-icon">{{item.icon}}</mat-icon>
+          <div class="info-content">
+            <h3 class="info-label">{{item.label}}</h3>
+            <ng-container [ngSwitch]="item.type">
+              <a *ngSwitchCase="'email'" [href]="'mailto:' + item.value" class="info-value">
+                {{item.value}}
+              </a>
+              <a *ngSwitchCase="'tel'" [href]="'tel:' + item.value" class="info-value">
+                {{item.value | phone}}
+              </a>
+              <p *ngSwitchDefault class="info-value">{{item.value}}</p>
+            </ng-container>
           </div>
         </div>
 
-        <div class="info-item">
-          <mat-icon>phone</mat-icon>
-          <div>
-            <h3>Phone</h3>
-            <a href="tel:+918941951465">+91 8941951465</a>
-          </div>
-        </div>
-
-        <div class="info-item">
-          <mat-icon>location_on</mat-icon>
-          <div>
-            <h3>Address</h3>
-            <p>Nand Gaon Road<br>Kosi Kalan (Mathura) 281403<br>India</p>
-          </div>
-        </div>
-
-        <div class="social-links">
-          <a href="https://www.linkedin.com/in/aman-jha-07334a254/" target="_blank" rel="noopener">
-            <mat-icon svgIcon="linkedin"></mat-icon>
-          </a>
-          <a href="https://github.com/amanjha7" target="_blank" rel="noopener">
-            <mat-icon svgIcon="leetcode"></mat-icon>
-          </a>
-          <a href="https://leetcode.com/u/Aman_jha_/" target="_blank" rel="noopener">
-            <mat-icon svgIcon="github"></mat-icon>
+        <div class="social-links" @stagger>
+          <a *ngFor="let social of socialLinks" 
+             [href]="social.link" 
+             target="_blank" 
+             rel="noopener"
+             mat-ripple
+             class="social-link">
+            <mat-icon [svgIcon]="social.icon" class="social-icon"></mat-icon>
+            <span class="social-label">{{social.label}}</span>
           </a>
         </div>
       </mat-card-content>
     </mat-card>
 
     <!-- Contact Form -->
-    <mat-card class="contact-form">
+    <mat-card class="contact-form animate-on-scroll" [@slideIn]>
       <mat-card-header>
-        <mat-card-title>Send a Message</mat-card-title>
+        <div mat-card-avatar class="form-header-icon">
+          <mat-icon>send</mat-icon>
+        </div>
+        <mat-card-title>Direct Message</mat-card-title>
+        <mat-card-subtitle>Typically replies within 2 hours</mat-card-subtitle>
       </mat-card-header>
       
       <mat-card-content>
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-          <mat-form-field appearance="outline">
-            <mat-label>Name</mat-label>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form-fields">
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>Your Name</mat-label>
             <input matInput formControlName="name" required>
-            <mat-error *ngIf="contactForm.get('name')?.errors">Name is required</mat-error>
+            <mat-icon matPrefix>person</mat-icon>
+            <mat-error *ngIf="contactForm.get('name')?.hasError('required')">
+              Please enter your name
+            </mat-error>
+            <mat-error *ngIf="contactForm.get('name')?.hasError('minlength')">
+              Name must be at least 2 characters
+            </mat-error>
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>Email Address</mat-label>
             <input matInput formControlName="email" required email>
-            <mat-error *ngIf="contactForm.get('email')?.errors">Valid email is required</mat-error>
+            <mat-icon matPrefix>email</mat-icon>
+            <mat-error *ngIf="contactForm.get('email')?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
+              Enter a valid email
+            </mat-error>
           </mat-form-field>
 
-          <mat-form-field appearance="outline">
-            <mat-label>Message</mat-label>
-            <textarea matInput formControlName="message" required rows="6"></textarea>
-            <mat-error *ngIf="contactForm.get('message')?.errors">Message is required</mat-error>
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>Your Message</mat-label>
+            <textarea matInput formControlName="message" required rows="5"></textarea>
+            <mat-icon matPrefix>chat</mat-icon>
+            <mat-error *ngIf="contactForm.get('message')?.hasError('required')">
+              Message is required
+            </mat-error>
+            <mat-error *ngIf="contactForm.get('message')?.hasError('minlength')">
+              Message must be at least 20 characters
+            </mat-error>
           </mat-form-field>
 
-          <button mat-raised-button color="primary" type="submit" [disabled]="!contactForm.valid">
-            Send Message
+          <button mat-raised-button 
+                  color="primary" 
+                  type="submit" 
+                  [disabled]="!contactForm.valid"
+                  class="submit-button">
+            <span *ngIf="!sending">Send Message</span>
+            <mat-spinner *ngIf="sending" diameter="24"></mat-spinner>
           </button>
         </form>
       </mat-card-content>
