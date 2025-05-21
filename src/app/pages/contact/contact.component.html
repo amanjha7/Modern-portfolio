@@ -113,7 +113,7 @@
                   [disabled]="!contactForm.valid"
                   class="submit-button">
             <span *ngIf="!sending">Send Message</span>
-            <mat-spinner *ngIf="sending" diameter="24"></mat-spinner>
+            <span *ngIf="sending"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Sending...</span>
           </button>
         </form>
       </mat-card-content>
