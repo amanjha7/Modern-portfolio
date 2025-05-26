@@ -24,7 +24,6 @@ interface Experience {
   providers: [DatePipe]
 })
 export class JobsStatusComponent {
-  selectedExperience: Experience | null = null;
   allExperiences: Experience[] = [{
     id: 1,
     name: 'Profunnel Technologies Private Limited',
@@ -51,6 +50,8 @@ export class JobsStatusComponent {
     attempts: 3,
     logo: 'assets/logos/images/pronnellogo.png',
   }];
+  selectedExperience: Experience | null = this.allExperiences[0];
+
 
   experienceHighlights: string[] = [
   'Built OAuth/REST integrations for DocuSign, GitHub, GitLab, etc.',
