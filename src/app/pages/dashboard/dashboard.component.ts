@@ -46,7 +46,7 @@ export class DashboardComponent implements OnInit {
   ];
 
   stats = [
-    { label: 'Experience', value: '3+ Years', icon: 'work_history' },
+    { label: 'Experience', value: '6 Months', icon: 'work_history' },
     { label: 'Projects', value: '15+', icon: 'code' },
     { label: 'Certifications', value: '5', icon: 'verified' },
     { label: 'Satisfaction', value: '100%', icon: 'sentiment_very_satisfied' }
